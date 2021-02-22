@@ -15,7 +15,8 @@ function App() {
       ...state,
       showLogin: false,
       name,
-    })
+    });
+    console.log(name);
   }
 
   return (

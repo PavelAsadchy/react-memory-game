@@ -3,35 +3,44 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 export const Login = ({ handleName }) => {
-  const [name, setName] = useState('');
-  const [validated, setValidated] = useState(false);
+  const [state, setState] = useState({
+    name: '',
+    valid: false,
+  });
+  const [warn, setWarn] = useState(false);
 
   const validateName = (name) => !!name;
 
   const handleChange = (e) => {
     const valid = validateName(e.target.value);
-    setName(e.target.value);
-    setValidated(valid);
+    if (valid) {
+      setState({
+        ...state,
+        name: e.target.value,
+        valid: valid,
+      });
+      setWarn(false);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     e.stopPropagation();
     
-    if (!validated) {
-      console.log('ggg')
-      return
+    if (!state.valid) {
+      setWarn(true);
+      return;
     };
 
-    handleName(name);
+    handleName(state.name);
   }
 
   return (
     <div className="login">
       <Form
-        onSubmit={handleSubmit}
         noValidate
-        validated={validated}
+        validated={state.validated}
+        onSubmit={handleSubmit}
       >
         <Form.Group>
           <Form.Label>Enter Your Name:</Form.Label>
@@ -41,8 +50,8 @@ export const Login = ({ handleName }) => {
             onChange={handleChange}
             required
           />
-          <Form.Control.Feedback type="invalid" style={validated ? {display: "none"} : {display: "block"}}>
-            nooooooo
+          <Form.Control.Feedback type="invalid" style={warn ? {display: "block"} : {display: "none"}}>
+            Please, choose a username
           </Form.Control.Feedback>
         </Form.Group>
         <Button
