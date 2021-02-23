@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Login } from './components/Login';
+import { Game } from './components/Game'
 import './App.css';
 
 function App() {
@@ -16,12 +17,12 @@ function App() {
       showLogin: false,
       name,
     });
-    console.log(name);
   }
 
   return (
     <div>
       {state.showLogin ? <Login handleName={handleName}/> : null}
+      {/* <Game /> */}
     </div>
   );
 }
