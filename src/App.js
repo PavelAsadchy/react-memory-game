@@ -22,7 +22,7 @@ function App() {
   return (
     <div>
       {state.showLogin ? <Login handleName={handleName}/> : null}
-      {/* <Game /> */}
+      <Game />
     </div>
   );
 }
