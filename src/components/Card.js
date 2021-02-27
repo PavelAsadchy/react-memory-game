@@ -1,10 +1,12 @@
 export const Card = ({ card, handleClick }) => {
   return (
     <div
-      className="card"
-      style={{background: `url(${card.pic})`}}
+      className="card card-blank"
+      data-check="false"
+      data-name={card.name}
+      style={{backgroundImage: `url(${card.pic})`}}
       onClick={handleClick}
-      >
+    >
     </div>
   );
 };

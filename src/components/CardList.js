@@ -1,24 +1,80 @@
-import { CARDS } from '../consts/cards';
+import { useState } from 'react';
 import { Card } from './Card';
+import { CARD_BLANK_CLASS, CHECK, NAME } from '../consts/const';
 
-export const CardList = () => {
+let onSelect = false;
+
+export const CardList = ({ cards }) => {
+  const [selectedCards, setSelectedCards] = useState({
+    prev: null,
+    current: null,
+  });
+
+  const flipCard = (card) => {
+    if (card.getAttribute(CHECK) === 'true') {
+      card.setAttribute(CHECK, 'false');
+      card.classList.add(CARD_BLANK_CLASS);
+    } else {
+      card.setAttribute(CHECK, 'true');
+      card.classList.remove(CARD_BLANK_CLASS);
+    }
+  }
+
+  const isEqual = (card1, card2) => {
+    return card1.getAttribute(NAME) === card2.getAttribute(NAME);
+  };
+
+  const clearSelectedCards = () => {
+    setSelectedCards({
+      prev: null,
+      current: null,
+    });
+  };
+
   const handleClick = (e) => {
-    console.log(e.target);
+    if (onSelect) return;
+
+    const resetFlippedCards = () => {
+      flipCard(selectedCards.prev);
+      flipCard(currentCard);
+      onSelect = false;
+    };
+
+    const currentCard = e.target;
+    if (currentCard.getAttribute(CHECK) === 'true') return;
+    if (currentCard.getAttribute(CHECK) === 'found') return;
+    flipCard(currentCard);
+    if (selectedCards.prev) {
+      onSelect = true;
+      if (!isEqual(selectedCards.prev, currentCard)) {
+        setTimeout(resetFlippedCards, 1500);
+        clearSelectedCards();
+      } else {
+        selectedCards.prev.setAttribute(CHECK, 'found');
+        currentCard.setAttribute(CHECK, 'found');
+        clearSelectedCards();
+        onSelect = false;
+      }
+    } else {
+      setSelectedCards({
+        ...selectedCards,
+        prev: currentCard,
+        current: null,
+      });
+    }
   };
 
   return (
-    <div className="cardList">
-      {CARDS
-        .sort(() => Math.random() - 0.5)
-        .map((card, index) => {
-          return (
-              <Card
-                key={index}
-                card={card}
-                handleClick={handleClick}
-              />
-          );
-        })}
+    <div className="card-list">
+      {cards.map((card, index) => {
+        return (
+            <Card
+              key={index}
+              card={card}
+              handleClick={handleClick}
+            />
+        );
+      })}
     </div>
   );
 };

@@ -21,8 +21,8 @@ function App() {
 
   return (
     <div>
-      {state.showLogin ? <Login handleName={handleName}/> : null}
-      <Game />
+      {state.showLogin ? <Login handleName={handleName}/> : <Game />}
+      {/* <Game /> */}
     </div>
   );
 }
