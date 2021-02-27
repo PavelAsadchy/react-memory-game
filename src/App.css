@@ -12,21 +12,34 @@
 }
 
 .game {
-  max-height: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.gameplay {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-list {
   display: grid;
-  grid-template-columns: repeat(4, minmax(50px, 250px));
+  grid-template-columns: repeat(4, 150px);
   grid-template-rows: repeat(3, 200px);
   gap: 5px;
 
 }
 
 .card {
-  /* width: 250px; */
-  /* height: 350px; */
   padding: 20px;
   overflow: hidden;
   background-size: cover;

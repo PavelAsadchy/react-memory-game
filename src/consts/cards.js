@@ -73,8 +73,8 @@ export const CARDS = [
     name: 'Zombie',
     flipped: false,
   },
-  // {
-  //   pic: ZombieKid,
-  //   flipped: false,
-  // },
+  {
+    pic: ZombieKid,
+    flipped: false,
+  },
 ];

@@ -1,7 +1,8 @@
 import { CardList } from './CardList';
+import { Header } from './Header';
 import { CARDS } from '../consts/cards';
 
-export const Game = () => {
+export const Game = ({ name }) => {
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -16,7 +17,12 @@ export const Game = () => {
 
   return (
     <div className="game">
-      <CardList cards={doubledCards}/>
+      <div className="header">
+        <Header name={name}/>
+      </div>
+      <div className="gameplay">
+        <CardList cards={doubledCards}/>
+      </div>
     </div>
   );
 };
