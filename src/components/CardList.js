@@ -1,13 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card } from './Card';
 import { CARD_BLANK_CLASS, CHECK, NAME } from '../consts/const';
 
 let onSelect = false;
 
-export const CardList = ({ cards }) => {
+export const CardList = ({ cards, endRound }) => {
   const [selectedCards, setSelectedCards] = useState({
     prev: null,
     current: null,
+  });
+
+  useEffect(() => {
+    const blancCards = document.getElementsByClassName('card-blank');
+    if (blancCards.length === 0) {
+      endRound(true);
+      const reset = document.getElementsByClassName('card');
+      Array.from(reset).forEach(card => {
+        card.classList.add('card-blank');
+        card.setAttribute(CHECK, 'false');
+      })
+    }
   });
 
   const flipCard = (card) => {
@@ -63,6 +75,7 @@ export const CardList = ({ cards }) => {
       });
     }
   };
+
 
   return (
     <div className="card-list">

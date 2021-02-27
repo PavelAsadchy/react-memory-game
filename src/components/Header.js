@@ -1,9 +1,9 @@
 import { Timer } from './Timer';
 
-export const Header = ({ name }) => {
+export const Header = ({ name, round }) => {
   return (
     <>
-      <div>Level:</div>
+      <div>Round: {round}</div>
       <div>{name}</div>
       <div><Timer /></div>
     </>

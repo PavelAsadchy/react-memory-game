@@ -1,4 +1,4 @@
-.login-wrapper {
+.login-wrapper, .end-round {
   position: absolute;
   left: 0;
   right: 0;
@@ -9,6 +9,12 @@
   justify-content: center;
   align-items: center;
   background: rgba(0,0,0,.2);
+}
+
+.end-round {
+  display: flex;
+  flex-direction: column;
+
 }
 
 .game {
