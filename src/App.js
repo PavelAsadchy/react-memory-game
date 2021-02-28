@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Login } from './components/Login';
-import { Game } from './components/Game'
+import { Game } from './components/Game';
 import './App.css';
 
 function App() {
@@ -24,7 +24,6 @@ function App() {
       {state.showLogin
         ? <Login handleName={handleName}/>
         : <Game name={state.name}/>}
-      {/* <Game /> */}
     </div>
   );
 }

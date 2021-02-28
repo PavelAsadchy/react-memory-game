@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { CardList } from './CardList';
 import { Header } from './Header';
 import { EndRound } from './EndRound';
+import { EndGame } from './EndGame';
 import { CARDS } from '../consts/cards';
 
 export const Game = ({ name }) => {
@@ -9,6 +10,7 @@ export const Game = ({ name }) => {
     round: 1,
     endRound: false,
     endGame: false,
+    time: 60,
   });
 
   const shuffleArray = (array) => {
@@ -28,7 +30,7 @@ export const Game = ({ name }) => {
       setGame({
         ...game,
         endRound: true,
-      })
+      });
     }
   };
 
@@ -40,27 +42,44 @@ export const Game = ({ name }) => {
         endRound: false,
       });
     }
-  }
+  };
+  
+  const handleEndGame = (boolean) => {
+    if (boolean) {
+      setGame({
+        ...game,
+        endGame: true,
+        time: 60,
+      });
+    }
+  };
 
   return (
     <div className="game">
-      <div className="header">
-        <Header
-          name={name}
-          round={game.round}
-        />
-      </div>
-      {game.endRound
-        ? null
-        : <div className="gameplay">
-            <CardList
-              cards={doubledCards}
-              endRound={handleEndRound}
-            />
-          </div>}
       {game.endRound
         ? <div className="end-round">
             <EndRound setNextRound={handleNextRound}/>
+          </div>
+        : <div className="container">
+            <div className="header">
+              <Header
+                name={name}
+                round={game.round}
+                time={game.time}
+                endRound={game.endRound}
+                endGame={handleEndGame}
+              />
+            </div>
+            <div className="gameplay">
+              <CardList
+                cards={doubledCards}
+                endRound={handleEndRound}
+              />
+            </div>
+          </div>}
+      {game.endGame
+        ? <div className="end-game">
+            <EndGame />
           </div>
         : null}
     </div>

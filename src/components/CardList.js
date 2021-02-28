@@ -76,9 +76,11 @@ export const CardList = ({ cards, endRound }) => {
     }
   };
 
-
   return (
-    <div className="card-list">
+    <div className={cards.length <= 8
+      ? "card-list"
+      : "card-list-extended"
+    }>
       {cards.map((card, index) => {
         return (
             <Card
