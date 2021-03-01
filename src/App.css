@@ -1,3 +1,9 @@
+.sound {
+  position: absolute;
+  right: 40px;
+  z-index: 100;
+}
+
 .login-wrapper, .end-round, .end-game {
   position: absolute;
   left: 0;
@@ -64,5 +70,5 @@
 }
 
 .card-blank {
-  background: no-repeat center/contain url('./assets/card-back.jpg') !important;
+  background: no-repeat center/contain url('./assets/image/card-back.jpg') !important;
 }

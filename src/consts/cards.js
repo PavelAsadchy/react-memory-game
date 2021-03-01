@@ -1,16 +1,16 @@
-import BlueScull from '../assets/BlueScull.png';
-import CreepyToy from '../assets/CreepyToy.png';
-import Franc from '../assets/Franc.png';
-import FriendlyMonster from '../assets/FriendlyMonster.png';
-import KingScull from '../assets/KingScull.png';
-import LaMuerte from '../assets/LaMuerte.png';
-import MexicanScull from '../assets/MexicanScull.png';
-import Pumpkin from '../assets/Pumpkin.png';
-import PumpkinAngry from '../assets/PumpkinAngry.png';
-import Skeleton from '../assets/Skeleton.png';
-import Vampire from '../assets/Vampire.png';
-import Zombie from '../assets/Zombie.png';
-import ZombieKid from '../assets/ZombieKid.png';
+import BlueScull from '../assets/image/BlueScull.png';
+import CreepyToy from '../assets/image/CreepyToy.png';
+import Franc from '../assets/image/Franc.png';
+import FriendlyMonster from '../assets/image/FriendlyMonster.png';
+import KingScull from '../assets/image/KingScull.png';
+import LaMuerte from '../assets/image/LaMuerte.png';
+import MexicanScull from '../assets/image/MexicanScull.png';
+import Pumpkin from '../assets/image/Pumpkin.png';
+import PumpkinAngry from '../assets/image/PumpkinAngry.png';
+import Skeleton from '../assets/image/Skeleton.png';
+import Vampire from '../assets/image/Vampire.png';
+import Zombie from '../assets/image/Zombie.png';
+import ZombieKid from '../assets/image/ZombieKid.png';
 
 export const CARDS = [
   {
