@@ -4,6 +4,7 @@ import { Header } from './Header';
 import { EndRound } from './EndRound';
 import { EndGame } from './EndGame';
 import { CARDS } from '../consts/cards';
+import { CHECK } from '../consts/const';
 
 export const Game = ({ name }) => {
   const [game, setGame] = useState({
@@ -25,6 +26,16 @@ export const Game = ({ name }) => {
   const doubledCards = slicedCards.concat([...slicedCards]);
   shuffleArray(doubledCards);
 
+  const resetCards = (boolean) => {
+    if (boolean) {
+      const reset = document.getElementsByClassName('card');
+      Array.from(reset).forEach(card => {
+        card.classList.add('card-blank');
+        card.setAttribute(CHECK, 'false');
+      });
+    }
+  }
+
   const handleEndRound = (boolean) => {
     if (boolean) {
       setGame({
@@ -41,6 +52,7 @@ export const Game = ({ name }) => {
         round: game.round + 1,
         endRound: false,
       });
+      resetCards(true);
     }
   };
   
@@ -49,6 +61,19 @@ export const Game = ({ name }) => {
       setGame({
         ...game,
         endGame: true,
+        time: 60,
+      });
+      resetCards(true);
+    }
+  };
+
+  const handleNewGame = (boolean) => {
+    if (boolean) {
+      setGame({
+        ...game,
+        round: 1,
+        endRound: false,
+        endGame: false,
         time: 60,
       });
     }
@@ -79,7 +104,7 @@ export const Game = ({ name }) => {
           </div>}
       {game.endGame
         ? <div className="end-game">
-            <EndGame />
+            <EndGame newGame={handleNewGame} />
           </div>
         : null}
     </div>
