@@ -1,38 +1,75 @@
-.App {
-  text-align: center;
+.sound {
+  position: absolute;
+  top: 10px;
+  right: 40px;
+  z-index: 100;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.login-wrapper, .end-round, .end-game {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  background: rgba(0,0,0,.6);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.end-round, .end-game {
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.game {
+  height: 100vh;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.gameplay {
+  flex-grow: 1;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(4, 120px);
+  grid-auto-rows: 160px;
+  gap: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-list-extended {
+  display: grid;
+  grid-template-columns: repeat(8, 120px);
+  grid-auto-rows: 160px;
+  gap: 5px;
+}
+
+.card {
+  padding: 20px;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.card-blank {
+  background: no-repeat center/contain url('./assets/image/card-back.jpg') !important;
 }
