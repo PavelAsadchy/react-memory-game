@@ -40,7 +40,7 @@ function App() {
         className="sound"
         onClick={handleSound}
       >
-        <i class={sound ? "bi bi-volume-up" : "bi bi-volume-mute"}></i>
+        <i className={sound ? "bi bi-volume-up" : "bi bi-volume-mute"}></i>
       </Button>
       {state.showLogin
         ? <Login handleName={handleName}/>

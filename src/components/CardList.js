@@ -14,11 +14,6 @@ export const CardList = ({ cards, endRound }) => {
     const blancCards = document.getElementsByClassName('card-blank');
     if (blancCards.length === 0) {
       endRound(true);
-      const reset = document.getElementsByClassName('card');
-      Array.from(reset).forEach(card => {
-        card.classList.add('card-blank');
-        card.setAttribute(CHECK, 'false');
-      })
     }
   });
 

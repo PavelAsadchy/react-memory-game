@@ -1,5 +1,6 @@
 .sound {
   position: absolute;
+  top: 10px;
   right: 40px;
   z-index: 100;
 }
@@ -18,7 +19,7 @@
   background: rgba(0,0,0,.6);
 }
 
-.end-round {
+.end-round, .end-game {
   display: flex;
   flex-direction: column;
 }
